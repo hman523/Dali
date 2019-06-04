@@ -1,0 +1,3 @@
+-Design main langauge features
+-Design standard libraries
+-Design metaprogramming capabilities
