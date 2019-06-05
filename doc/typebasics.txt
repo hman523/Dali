@@ -1,0 +1,13 @@
+There are four basic types:
+
+num - Any number
+bool - true or false
+string - any arangement of letters, numbers, or symbols
+functions - these can be passed as variables and are a type
+
+There are also two built-in data structures built into the core:
+
+arrays - contiguous memory, can be any of the data types
+lists - noncontigous memory, no random lookups, can be of any data types
+
+Additionally, there will be structures. They can hold any arrangement of other types and structures. They must be declared in a separate file.

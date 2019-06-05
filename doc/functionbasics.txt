@@ -1,0 +1,12 @@
+The basic function header:
+def [state change] [return type] [function name]([parameters]):
+ex. 
+pure num squareroot(num x):
+void savefile():
+
+Three types of state change in functions:
+Pure -No side effects, just return values
+Void -No return type, just side effects
+Hybrid -Return type and side effects
+
+You might get compiler errors, probably from the C++ compiler if you try and modify values in a pure function.

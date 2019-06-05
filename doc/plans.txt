@@ -1,3 +1,6 @@
 -Design main langauge features
+-Create tests for the compiler
 -Design standard libraries
+-Design tests for libraries
 -Design metaprogramming capabilities
+-Create text editor support
