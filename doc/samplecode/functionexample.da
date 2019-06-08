@@ -1,0 +1,7 @@
+def void main(){
+	printmessage();
+}
+
+def void printmessage(){
+	print("Hello World");
+}
