@@ -1,4 +1,7 @@
 cmake_minimum_required (VERSION 3.10.2)
 project (DaliC)
 
-add_executable (dalic main.cpp)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_FLAGS "-Wall")
+add_executable (dalic main.cpp ParseTree.cpp ParseTree.h TreeNode.cpp TreeNode.h)
