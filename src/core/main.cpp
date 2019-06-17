@@ -12,9 +12,11 @@ int main(int argc, char *argv[]) {
   ParseTree *tree;
   try {
     tree = new ParseTree(std::string(argv[1]));
-    // tree->printTree();
+    tree->printTree();
+
   } catch (std::logic_error e) {
     std::cerr << e.what() << std::endl;
+    exit(EXIT_FAILURE);
   }
 
   return 0;
