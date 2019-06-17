@@ -1,6 +1,8 @@
 #include "ParseTree.h"
 #include <iostream>
 
+void errorlogger(std::string e);
+
 int main(int argc, char *argv[]) {
   std::cout << "Starting Dali Compiler" << std::endl;
   if (argc != 2) {
@@ -15,9 +17,11 @@ int main(int argc, char *argv[]) {
     tree->printTree();
 
   } catch (std::logic_error e) {
-    std::cerr << e.what() << std::endl;
+    errorlogger(e.what());
     exit(EXIT_FAILURE);
   }
 
   return 0;
 }
+
+void errorlogger(const std::string e) { std::cerr << e << std::endl; }
