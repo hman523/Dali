@@ -6,6 +6,7 @@
 #include <exception>
 #include <fstream>
 #include <stack>
+#include <iostream>
 
 ParseTree::ParseTree(std::string filename) {
   blockTree = new TreeNode(nullptr, "");
@@ -18,6 +19,7 @@ ParseTree::ParseTree(std::string filename) {
   std::string currentline("");
   bool inString = false;
   bool inCpp = false;
+
   while (file.get(curr)) {
     if (curr == '$' && !inString && !inCpp) {
       inCpp = true;
@@ -40,6 +42,18 @@ ParseTree::ParseTree(std::string filename) {
       inString = false;
       currentline += curr;
 
+    }
+
+    else if(curr == '#' && !inCpp && !inString){
+      std::string lib = "";
+      file.get(curr);
+      while(curr != '\n'){
+        if(curr != ' '){
+          lib += curr;
+        }
+        file.get(curr);
+      }
+      importlist.push_back(lib);
     }
 
     else if (curr == ';' && !inString && !inCpp) {
@@ -74,4 +88,11 @@ ParseTree::ParseTree(std::string filename) {
   }
 }
 
-void ParseTree::printTree() { blockTree->print(); }
+
+
+void ParseTree::printTree() {
+  std::cout << "Imports:" << std::endl;
+  for (uint32_t i = 0; i < importlist.size(); ++i) {
+    std::cout << "[" << importlist[i] << "]" << std::endl;
+  }
+  blockTree->print(); }

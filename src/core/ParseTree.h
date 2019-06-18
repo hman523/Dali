@@ -17,6 +17,7 @@ public:
 
 private:
   TreeNode *blockTree;
+  std::vector<std::string> importlist;
 };
 
 #endif // DALIC_PARSETREE_H
