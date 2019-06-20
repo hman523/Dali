@@ -36,7 +36,7 @@ ParseTree::ParseTree(std::string filename) {
       inCpp = true;
       if (currentline != "") {
 
-        throw std::logic_error("Parse error: cannot have c++ in a dali "
+        throw std::logic_error("Cannot have c++ in a dali "
                                "expression. Error on line " +
                                std::to_string(linenumber));
       }

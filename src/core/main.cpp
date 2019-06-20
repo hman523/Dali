@@ -1,3 +1,4 @@
+#include "CodeGenerator.h"
 #include "ParseTree.h"
 #include <iostream>
 
@@ -6,7 +7,7 @@ void errorlogger(std::string e);
 int main(int argc, char *argv[]) {
   std::cout << "Starting Dali Compiler" << std::endl;
   if (argc != 2) {
-    std::cout << "Need a file to compile" << std::endl;
+    std::cerr << "Need a file to compile" << std::endl;
     exit(1);
   }
 
@@ -15,11 +16,17 @@ int main(int argc, char *argv[]) {
   try {
     tree = new ParseTree(std::string(argv[1]));
     std::cout << "Parse tree made successfully" << std::endl;
-    tree->printTree();
+    // tree->printTree();
 
   } catch (std::logic_error e) {
-    errorlogger(e.what());
+    errorlogger("Parsing error:" + std::string(e.what()));
     exit(EXIT_FAILURE);
+  }
+  std::cout << "Generating code" << std::endl;
+  CodeGenerator *gen;
+  try {
+    gen = new CodeGenerator(tree);
+  } catch (std::logic_error e) {
   }
 
   return 0;
