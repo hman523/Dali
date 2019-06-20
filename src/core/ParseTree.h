@@ -12,15 +12,29 @@
 
 class ParseTree {
 public:
-  //Default constructor is deleted for safety
-    ParseTree() = delete;
+  // Default constructor is deleted for safety
+  ParseTree() = delete;
 
-    ParseTree(std::string filename);
+  /**
+   * ParseTree Constructor
+   * @pre none
+   * @post Parse tree is made
+   * @param filename : the file that is opened and read from
+   */
+  ParseTree(std::string filename);
+
+  /**
+   * printTree function
+   * @pre Parse Tree is constructed
+   * @post the tree is printed to terminal
+   */
   void printTree();
 
 private:
+  // Head node to parse tree
   TreeNode *blockTree;
-  std::vector<std::string> importlist;
+  // Vector holding all of the import libraries needed
+  std::vector<std::string> importList;
 };
 
 #endif // DALIC_PARSETREE_H

@@ -8,7 +8,6 @@
 #include <iostream>
 #include <stack>
 
-
 /**
  * ParseTree Constructor
  * @pre none
@@ -29,15 +28,17 @@ ParseTree::ParseTree(std::string filename) {
   bool startOfLine = true;
   uint32_t linenumber = 1;
   while (file.get(curr)) {
-    if(curr == '\n'){
-      linenumber+=1;
+    if (curr == '\n') {
+      linenumber += 1;
     }
 
     if (curr == '$' && !inString && !inCpp) {
       inCpp = true;
-      if (currentline != ""){
+      if (currentline != "") {
 
-          throw std::logic_error("Parse error: cannot have c++ in a dali expression. Error on line " + std::to_string(linenumber));
+        throw std::logic_error("Parse error: cannot have c++ in a dali "
+                               "expression. Error on line " +
+                               std::to_string(linenumber));
       }
       currentline += "$";
     } else if (curr == '$' && !inString && inCpp) {
@@ -66,7 +67,7 @@ ParseTree::ParseTree(std::string filename) {
         }
         file.get(curr);
       }
-      importlist.push_back(lib);
+      importList.push_back(lib);
       ++linenumber;
     }
 
@@ -108,14 +109,14 @@ ParseTree::ParseTree(std::string filename) {
 }
 
 /**
- *
+ * printTree function
  * @pre Parse Tree is constructed
  * @post the tree is printed to terminal
  */
 void ParseTree::printTree() {
   std::cout << "Imports:" << std::endl;
-  for (uint32_t i = 0; i < importlist.size(); ++i) {
-    std::cout << "[" << importlist[i] << "]" << std::endl;
+  for (uint32_t i = 0; i < importList.size(); ++i) {
+    std::cout << "[" << importList[i] << "]" << std::endl;
   }
   blockTree->print();
 }
