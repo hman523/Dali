@@ -12,7 +12,10 @@
 
 class ParseTree {
 public:
-  ParseTree(std::string filename);
+  //Default constructor is deleted for safety
+    ParseTree() = delete;
+
+    ParseTree(std::string filename);
   void printTree();
 
 private:
