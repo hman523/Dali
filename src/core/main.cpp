@@ -14,6 +14,7 @@ int main(int argc, char *argv[]) {
   ParseTree *tree;
   try {
     tree = new ParseTree(std::string(argv[1]));
+    std::cout << "Parse tree made successfully" << std::endl;
     tree->printTree();
 
   } catch (std::logic_error e) {

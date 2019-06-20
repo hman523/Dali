@@ -19,7 +19,7 @@ ParseTree::ParseTree(std::string filename) {
   std::string currentline("");
   bool inString = false;
   bool inCpp = false;
-
+  bool startOfLine = true;
   while (file.get(curr)) {
     if (curr == '$' && !inString && !inCpp) {
       inCpp = true;
@@ -34,6 +34,7 @@ ParseTree::ParseTree(std::string filename) {
       blockTree->addChild(temp);
       currentline = "";
       inCpp = false;
+      startOfLine = true;
     } else if (curr == '"' && !inString && !inCpp) {
       inString = true;
       currentline += curr;
@@ -60,15 +61,22 @@ ParseTree::ParseTree(std::string filename) {
       TreeNode *temp = new TreeNode(blocknest.top(), currentline);
       blockTree->addChild(temp);
       currentline = "";
+      startOfLine = true;
     } else if (curr == '{' && !inString && !inCpp) {
       TreeNode *temp = new TreeNode(blocknest.top(), currentline);
       blocknest.push(temp);
       blockTree->addChild(temp);
       currentline = "";
+      startOfLine = true;
     } else if (curr == '}' && !inString && !inCpp) {
       blocknest.pop();
-    } else {
+    } else if (startOfLine && (curr == ' ' || curr == '\n' || curr == '\t')){
+        //do nothing if whitespace at beginning of line
+        std::cout << "" << std::endl;
+    }
+    else {
       currentline += curr;
+      startOfLine = false;
     }
   }
   if (currentline != "") {
