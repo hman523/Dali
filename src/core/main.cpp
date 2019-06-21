@@ -27,6 +27,7 @@ int main(int argc, char *argv[]) {
   try {
     gen = new CodeGenerator(tree);
   } catch (std::logic_error e) {
+    errorlogger("Code generation error" + std::string(e.what()));
   }
 
   return 0;

@@ -30,6 +30,8 @@ public:
    */
   void printTree();
 
+  void parseLines();
+
 private:
   // Head node to parse tree
   TreeNode *blockTree;

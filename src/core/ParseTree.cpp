@@ -108,6 +108,10 @@ ParseTree::ParseTree(std::string filename) {
   }
 }
 
+void ParseTree::parseLines() {
+  // To do: look into how to do this type of stuff
+}
+
 /**
  * printTree function
  * @pre Parse Tree is constructed
