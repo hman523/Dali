@@ -6,7 +6,11 @@
 #include <fstream>
 #include <numeric>
 
-CodeGenerator::CodeGenerator(ParseTree *mytree) : tree(mytree) {}
+CodeGenerator::CodeGenerator(ParseTree *mytree) : tree(mytree) {
+  //parse each line
+  //put into readable format
+  //store code in a vector
+}
 
 void CodeGenerator::WriteToFile(std::string fname) {
   std::string out = std::accumulate(code.begin(), code.end(), std::string(""));
