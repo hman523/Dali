@@ -2,7 +2,11 @@
 #include "ParseTree.h"
 #include <iostream>
 
+std::string ofilename = "out.cpp";
+
 void errorlogger(std::string e);
+
+
 
 int main(int argc, char *argv[]) {
   std::cout << "Starting Dali Compiler" << std::endl;
@@ -19,7 +23,7 @@ int main(int argc, char *argv[]) {
     // tree->printTree();
 
   } catch (std::logic_error e) {
-    errorlogger("Parsing error:" + std::string(e.what()));
+    errorlogger("Parsing error: " + std::string(e.what()));
     exit(EXIT_FAILURE);
   }
   std::cout << "Generating code" << std::endl;
@@ -27,7 +31,13 @@ int main(int argc, char *argv[]) {
   try {
     gen = new CodeGenerator(tree);
   } catch (std::logic_error e) {
-    errorlogger("Code generation error" + std::string(e.what()));
+    errorlogger("Code generation error: " + std::string(e.what()));
+  }
+
+  try {
+    gen->WriteToFile(ofilename);
+  } catch (std::exception e) {
+    errorlogger("Writing to file error: " + std::string(e.what()));
   }
 
   return 0;
