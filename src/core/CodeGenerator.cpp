@@ -3,8 +3,8 @@
 //
 
 #include "CodeGenerator.h"
-#include <numeric>
 #include <fstream>
+#include <numeric>
 
 CodeGenerator::CodeGenerator(ParseTree *mytree) : tree(mytree) {}
 

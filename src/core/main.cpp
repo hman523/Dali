@@ -6,8 +6,6 @@ std::string ofilename = "out.cpp";
 
 void errorlogger(std::string e);
 
-
-
 int main(int argc, char *argv[]) {
   std::cout << "Starting Dali Compiler" << std::endl;
   if (argc != 2) {
